@@ -1,0 +1,16 @@
+/foo/
+/bar.txt
+
+# Ignore Everything
+/*
+
+# Except for these:
+!/.gitignore
+!/Assets
+!/ProjectSettings
+
+#Ignore all .meta file
+*.meta
+#But not source file with postfix. which is everything but a folder
+!*.*.meta
+Assets/Lava_Flowing_Shader/Materials/mtl_lava_simple.mat
