@@ -26,7 +26,8 @@ public class CarMove : MonoBehaviour
     {
         speed += acceleration * Time.deltaTime;
         speed = Mathf.Clamp(speed, 0f, maxSpeed);
-        carT.Translate(carT.forward.normalized * speed);
+        //carT.Translate(carT.forward.normalized * speed); <------Non so perchè ma funziona male con la rotazione
+        carT.position += carT.forward.normalized * speed;
     }
 
     //Rotazione della macchina
