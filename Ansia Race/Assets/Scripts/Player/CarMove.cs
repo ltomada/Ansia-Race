@@ -23,6 +23,7 @@ public class CarMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Collisione con Ostacolo
         if (other.tag == "Obstacle")
             HitObstacle(other);
     }
