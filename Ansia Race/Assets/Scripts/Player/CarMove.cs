@@ -17,8 +17,22 @@ public class CarMove : MonoBehaviour
 
     void Update()
     {
+        SpeedUp();
+        TurnCar();
+    }
+
+    //Accelerazione della macchina
+    private void SpeedUp()
+    {
         speed += acceleration * Time.deltaTime;
         speed = Mathf.Clamp(speed, 0f, maxSpeed);
-        carT.position += (carT.forward.normalized * speed);
+        carT.Translate(carT.forward.normalized * speed);
+    }
+
+    //Rotazione della macchina
+    private void TurnCar()
+    {
+        float rotation = Input.GetAxis("Horizontal") * turningRate * Time.deltaTime;
+        carT.Rotate(0, rotation, 0);
     }
 }
