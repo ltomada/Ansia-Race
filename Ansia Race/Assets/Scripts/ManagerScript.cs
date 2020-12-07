@@ -31,7 +31,8 @@ public class ManagerScript : MonoBehaviour
 
     public void LevelFail()
     {
-        enemy.transform.Translate(enemyAdvancement, 0f, 0f);
+        Vector2 newPos = new Vector2(enemy.GetComponent<RectTransform>().anchoredPosition.x + enemyAdvancement, 0f);
+        enemy.GetComponent<RectTransform>().anchoredPosition = newPos;
     }
 
     public void LevelSuccess()
