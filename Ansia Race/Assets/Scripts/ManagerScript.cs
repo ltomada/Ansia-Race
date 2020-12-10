@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ManagerScript : MonoBehaviour
 {
@@ -26,7 +27,12 @@ public class ManagerScript : MonoBehaviour
 
     void Update()
     {
-        
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name != "WorldMap")
+            worldCanvas.SetActive(false);
+        else
+            worldCanvas.SetActive(true);
+
     }
 
     public void LevelFail()
