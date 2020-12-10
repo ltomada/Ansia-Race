@@ -1170,6 +1170,14 @@ PrefabInstance:
       value: Car
       objectReference: {fileID: 0}
     - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: maxSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: acceleration
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
       propertyPath: slowPercentage
       value: 70
       objectReference: {fileID: 0}
