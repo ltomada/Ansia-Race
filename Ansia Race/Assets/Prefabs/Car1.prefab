@@ -199,10 +199,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5abb136fbee714bb7d1805ea36e170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0.15
+  maxSpeed: 0.17
   speed: 0
   acceleration: 0.07
-  turningRate: 30
+  turningRate: 50
   slowPercentage: 70
   boostSpeed: 0.3
   boostAccelerationTime: 2
@@ -214,8 +214,8 @@ MonoBehaviour:
   accelTimer: 0
   boostspeedTimer: 0
   decelTimer: 0
-  breaksIntegrity: 1
-  breaksDeceleration: 0
+  breaksIntegrity: 4
+  breaksDeceleration: 0.09
 --- !u!1 &9053544904510279441
 GameObject:
   m_ObjectHideFlags: 0
