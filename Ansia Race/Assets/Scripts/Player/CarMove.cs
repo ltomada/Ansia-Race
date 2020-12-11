@@ -61,6 +61,13 @@ public class CarMove : MonoBehaviour
             HitObstacle(other);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Collisione con muro
+        if (collision.gameObject.tag == "Wall")
+            HitWall();
+    }
+
     //Accelerazione della macchina
     private void SpeedUp()
     {
@@ -113,6 +120,12 @@ public class CarMove : MonoBehaviour
     private void HitObstacle(Collider other)
     {
         Destroy(other.gameObject);
+        speed *= (1f - (slowPercentage / 100f));
+    }
+
+    //Collisione con muro
+    private void HitWall()
+    {
         speed *= (1f - (slowPercentage / 100f));
     }
 
