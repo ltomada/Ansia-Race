@@ -47,8 +47,11 @@ public class CarMove : MonoBehaviour
     }
 
     void Update()
-    {       
-        Moving();
+    {
+        if (Input.GetKey(KeyCode.Space) && breaksIntegrity > 0)
+            Breaking();
+        else
+            Moving();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -113,33 +116,41 @@ public class CarMove : MonoBehaviour
         speed *= (1f - (slowPercentage / 100f));
     }
 
-    //Stop
-    private void Stop()
-    {
-        speed = 0;
-        turningRate = 0;
-    }
-
     //Per checkare se stare fermo o partire
     private void Moving()
     {
-        if (GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>().timerActive)
+        
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !boosting && !boostRelease)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift) && !boosting && !boostRelease)
-            {
-                boosting = true;
-                Debug.Log("Dovrebbe funzionare");
-            }
+            boosting = true;
+            Debug.Log("Dovrebbe funzionare");
+        }
 
-            if (boosting || boostRelease)
-                Boost();
-            else
-                SpeedUp();
+        if (boosting || boostRelease)
+            Boost();
+        else
+            SpeedUp();
 
+         TurnCar();
+       
+    }
+
+    //Freno
+    private void Breaking()
+    {
+        breaksIntegrity -= Time.deltaTime;
+        if (speed > 0)
+        {
+            speed -= breaksDeceleration * Time.deltaTime;
             TurnCar();
         }
         else
-            Stop();
+        {
+            breaksIntegrity += Time.deltaTime;
+        }
+        speed = Mathf.Clamp(speed, 0f, speed);
+        transform.position += transform.forward.normalized * speed;
     }
 
     //Per gestire curve di movimento (not really)
