@@ -1200,15 +1200,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
       propertyPath: boostSpeedTime
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
       propertyPath: slowPercentage
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: breaksIntegrity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: breaksDeceleration
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
       propertyPath: boostAccelerationTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
       propertyPath: boostDecelerationTime
