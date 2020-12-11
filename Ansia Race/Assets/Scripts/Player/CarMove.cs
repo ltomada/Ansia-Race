@@ -4,21 +4,51 @@ using UnityEngine;
 
 public class CarMove : MonoBehaviour
 {
+    [Header ("")]
+    [Header ("Standard Movement Settings")]
     public float maxSpeed;
     public float speed = 0f;
     public float acceleration = 0.5f;
     public float turningRate = 30f;
-    public float slowPercentage = 40f;
+    public float slowPercentage = 70f;
+
+    [Header("")]
+    [Header("Boost Settings")]
+    [Header("")]
+    public float boostSpeed = 0f;
+    public float boostAccelerationTime = 0f;
+    public float boostSpeedTime = 0f;
+    public float boostDecelerationTime = 0f;
+
+    public bool boosting = false;
+    public bool boostRelease = false;
+
+    public float fullBoostTimer = 0f;
+    public float accelTimer = 0f;
+    public float boostspeedTimer = 0f;
+    public float decelTimer = 0f;
+
+    [Header("")]
+    [Header("Breaks Settings")]
+    [Header("")]
+    public float breaksIntegrity = 1f;
+    public float breaksDeceleration = 0f;
+
+    //Other private variables
+    private float lerpMoment = 0f;
+
 
     void Start()
     {
-
+        fullBoostTimer = boostAccelerationTime + boostSpeedTime + boostDecelerationTime;
+        accelTimer = boostAccelerationTime;
+        boostspeedTimer = boostSpeedTime;
+        decelTimer = boostDecelerationTime;
     }
 
     void Update()
-    {
-        SpeedUp();
-        TurnCar();
+    {       
+        Moving();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,10 +74,97 @@ public class CarMove : MonoBehaviour
         transform.Rotate(0, rotation, 0);
     }
 
+    //Boost e decelerazione
+    private void Boost()
+    {
+        if ((accelTimer > 0) || (boostspeedTimer > 0))          //accelera
+        {
+            speed += LerpNumber(speed, boostSpeed, boostAccelerationTime);
+            accelTimer -= Time.deltaTime;
+            if (accelTimer <= 0)                  //stasi
+            {
+                speed = boostSpeed;
+                boostspeedTimer -= Time.deltaTime;
+            }
+            transform.position += transform.forward.normalized * speed;
+        }
+        else              //decelera
+        {
+            boosting = false;
+            boostRelease = true;
+            if ((decelTimer > 0) && (speed > maxSpeed))
+            {
+                speed += LerpNumber(speed, maxSpeed, boostDecelerationTime);
+                decelTimer -= Time.deltaTime;
+                transform.position += transform.forward.normalized * speed;
+            }
+            else           //resetta
+            {
+                BoostTimersReset();
+                boostRelease = false;
+            }
+        }
+    }
+
     //Collisione con ostacolo
     private void HitObstacle(Collider other)
     {
         Destroy(other.gameObject);
         speed *= (1f - (slowPercentage / 100f));
+    }
+
+    //Stop
+    private void Stop()
+    {
+        speed = 0;
+        turningRate = 0;
+    }
+
+    //Per checkare se stare fermo o partire
+    private void Moving()
+    {
+        if (GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>().timerActive)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !boosting && !boostRelease)
+            {
+                boosting = true;
+                Debug.Log("Dovrebbe funzionare");
+            }
+
+            if (boosting || boostRelease)
+                Boost();
+            else
+                SpeedUp();
+
+            TurnCar();
+        }
+        else
+            Stop();
+    }
+
+    //Per gestire curve di movimento (not really)
+    private float LerpNumber(float a, float b, float time)
+    {
+        if (time > 0)
+        {
+            time -= Time.deltaTime;
+            lerpMoment += (b - a) * Time.deltaTime;
+            lerpMoment = Mathf.Clamp(lerpMoment, 0f, (b - a));
+            return lerpMoment;
+        }
+        else
+        {
+            lerpMoment = 0f;
+            return lerpMoment;
+        }
+    }
+
+    //Reset boost timers
+    private void BoostTimersReset()
+    {
+        fullBoostTimer = boostAccelerationTime + boostSpeedTime + boostDecelerationTime;
+        accelTimer = boostAccelerationTime;
+        boostspeedTimer = boostSpeedTime;
+        decelTimer = boostDecelerationTime;
     }
 }

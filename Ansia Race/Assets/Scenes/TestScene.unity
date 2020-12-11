@@ -553,7 +553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &963194226
 AudioListener:
   m_ObjectHideFlags: 0
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 2016180153}
   m_Layer: 5
   m_Name: Timer
-  m_TagString: Untagged
+  m_TagString: Timer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1016,8 +1016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c67feca4df6bca4db7278a7413ef177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTimer: 65
+  levelTimer: 90
   partTimer: 0
+  timerActive: 1
   screenTime: {fileID: 0}
 --- !u!1 &2023609382
 GameObject:
@@ -1121,6 +1122,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 44767687449671242, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 44767687449671242, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 44767687449671242, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 461429716634706587, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 510510413126897952, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1174,13 +1191,33 @@ PrefabInstance:
       value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: boostSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
       propertyPath: acceleration
       value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: boostSpeedTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
       propertyPath: slowPercentage
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: boostAccelerationTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 510510413126897957, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: boostDecelerationTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976907634280593903, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7150889083716802961, guid: ca4b611f598ba4a4794664eaabc54a05, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8943cb1a3434afd47924dad93267ff74, type: 3}
 --- !u!1 &919132147662737476 stripped
