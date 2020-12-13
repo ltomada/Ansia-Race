@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/WorldMap.unity
     guid: 2eeceb89c7af92a4d96ef7175eb5262d
   - enabled: 1
+    path: Assets/Scenes/Lvl_1.unity
+    guid: 24be66be102976541b148db619624d59
+  - enabled: 1
+    path: Assets/Scenes/Lvl_2.unity
+    guid: 68d14df1a6a35634a9963a2afd6f90a7
+  - enabled: 1
+    path: Assets/Scenes/Lvl_3.unity
+    guid: e4b48409e59564341b46f1650ca490a0
+  - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
