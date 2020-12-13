@@ -11,6 +11,9 @@ public class CarMove : MonoBehaviour
     public float acceleration = 0.5f;
     public float turningRate = 30f;
     public float slowPercentage = 70f;
+    public float slowedMaxSpeed = 0.1f;
+    public float slowingDeceleration = 0.09f;
+    private float realMaxSpeed;
 
     [Header("")]
     [Header("Boost Settings")]
@@ -44,6 +47,7 @@ public class CarMove : MonoBehaviour
         accelTimer = boostAccelerationTime;
         boostspeedTimer = boostSpeedTime;
         decelTimer = boostDecelerationTime;
+        realMaxSpeed = maxSpeed;
     }
 
     void Update()
@@ -59,6 +63,21 @@ public class CarMove : MonoBehaviour
         //Collisione con Ostacolo
         if (other.tag == "Obstacle")
             HitObstacle(other);
+
+        //Corsia lenta
+        if (other.tag == "SlowArea")
+        {
+            maxSpeed = slowedMaxSpeed;
+            SlowMove();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "SlowArea")
+        {
+            maxSpeed = realMaxSpeed;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -164,6 +183,15 @@ public class CarMove : MonoBehaviour
         }
         speed = Mathf.Clamp(speed, 0f, speed);
         transform.position += transform.forward.normalized * speed;
+    }
+
+    //Zona rallentata
+    private void SlowMove()
+    {
+        if (speed > slowedMaxSpeed)
+            speed -= slowingDeceleration * Time.deltaTime;
+        else
+            speed = Mathf.Clamp(speed, 0, maxSpeed);
     }
 
     //Per gestire curve di movimento (not really)
