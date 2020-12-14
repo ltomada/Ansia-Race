@@ -123,6 +123,8 @@ MonoBehaviour:
   acceleration: 0.03
   turningRate: 30
   slowPercentage: 40
+  slowedMaxSpeed: 0.1
+  slowingDeceleration: 0.09
   boostSpeed: 0
   boostAccelerationTime: 1
   boostSpeedTime: 1
@@ -174,7 +176,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852547391380401392}
-  m_Mesh: {fileID: -5523277661179574252, guid: cf49310c9ea9b4c4e9f65f49756ffdae, type: 3}
+  m_Mesh: {fileID: -7150889083716802961, guid: 2c72b97703b624c4ab48e49e7fb0124f, type: 3}
 --- !u!23 &1212637243156827429
 MeshRenderer:
   m_ObjectHideFlags: 0
