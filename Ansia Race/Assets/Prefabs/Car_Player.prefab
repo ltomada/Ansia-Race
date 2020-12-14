@@ -319,6 +319,8 @@ MonoBehaviour:
   slowPercentage: 70
   slowedMaxSpeed: 0.1
   slowingDeceleration: 0.09
+  realMaxSpeed: 0
+  realTurningRate: 0
   boostSpeed: 0.3
   boostAccelerationTime: 2
   boostSpeedTime: 3
@@ -344,13 +346,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 2012634019167235679}
-  boostObject: {fileID: 0}
+  boostObject: {fileID: 4855448487055795074}
   boostPossible: 1
   carParts:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1363022795433315747}
+  - {fileID: 2787284752354892586}
   carPartsCheck: 0000
   c: 0
+  controlRate: 0.5
+  speedUp: 0.15
 --- !u!1 &2046283409808024763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,6 +2162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ruota_AS
       objectReference: {fileID: 0}
+    - target: {fileID: 1710520252271915996, guid: 353be6781f3aedb40981d0ca1996a060, type: 3}
+      propertyPath: m_TagString
+      value: Ruota
+      objectReference: {fileID: 0}
     - target: {fileID: 2087187219725363558, guid: 353be6781f3aedb40981d0ca1996a060, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -3111,6 +3119,10 @@ PrefabInstance:
     - target: {fileID: 7238159230488649805, guid: dacf72a500338f043961ff77c2cc1431, type: 3}
       propertyPath: m_Name
       value: ruota_AD
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238159230488649805, guid: dacf72a500338f043961ff77c2cc1431, type: 3}
+      propertyPath: m_TagString
+      value: Ruota
       objectReference: {fileID: 0}
     - target: {fileID: 8014379648740621047, guid: dacf72a500338f043961ff77c2cc1431, type: 3}
       propertyPath: m_RootOrder

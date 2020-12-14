@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class BoostPieces : MonoBehaviour
 {
+    [Header("")]
+    [Header("Parts Settings")]
     public GameObject car;
     public GameObject boostObject;
     public bool boostPossible = true;
     public GameObject[] carParts;
     public bool[] carPartsCheck;
     public int c;
+
+    [Header("")]
+    [Header("Effects Settings")]
+    [Header("")]
+    public float controlRate = 0.5f;
+    public float speedUp = 0.15f;
+
+
+    private int controlCounter = 0;
 
     void Start()
     {
@@ -41,6 +52,7 @@ public class BoostPieces : MonoBehaviour
             carParts[partSelector].GetComponent<Rigidbody>().useGravity = true;
             carParts[partSelector].transform.parent = null;
             carPartsCheck[partSelector] = false;
+            ExtraEffect(carParts[partSelector]);
             c ++;
         }
         else
@@ -49,6 +61,23 @@ public class BoostPieces : MonoBehaviour
             boostObject.GetComponent<Rigidbody>().useGravity = true;
             boostObject.transform.parent = null;
             boostPossible = false;
+        }
+    }
+
+    public void ExtraEffect(GameObject pezzo)
+    {
+        string tag = pezzo.tag;
+
+        //effetti vari
+        if (tag == "Ruota")
+        {
+            controlCounter ++;
+            this.GetComponent<CarMove>().turningRate = this.GetComponent<CarMove>().realTurningRate / (1f + (controlRate * controlCounter));
+        }
+
+        if (tag == "Peso")
+        {
+            this.GetComponent<CarMove>().realMaxSpeed += speedUp;
         }
     }
 }

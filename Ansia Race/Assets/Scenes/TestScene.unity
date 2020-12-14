@@ -231,11 +231,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &330672088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1363022795433315747, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
-  m_PrefabInstance: {fileID: 1762958239}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &371960089 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1012802027232232428, guid: 577ed50439a8ab040892a280b2789e82, type: 3}
@@ -1132,11 +1127,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1247168972 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4855448487055795074, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
-  m_PrefabInstance: {fileID: 1762958239}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1278761206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8443132527199583856, guid: 577ed50439a8ab040892a280b2789e82, type: 3}
@@ -1405,11 +1395,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1458603497 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2787284752354892586, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
-  m_PrefabInstance: {fileID: 1762958239}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1625806353 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5204019899260820499, guid: 577ed50439a8ab040892a280b2789e82, type: 3}
@@ -1511,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2012634019167235675, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2012634019167235675, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1549,18 +1534,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car_Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3360146975683521971, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
-      propertyPath: boostObject
-      value: 
-      objectReference: {fileID: 1247168972}
-    - target: {fileID: 3360146975683521971, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
-      propertyPath: carParts.Array.data[0]
-      value: 
-      objectReference: {fileID: 330672088}
-    - target: {fileID: 3360146975683521971, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
-      propertyPath: carParts.Array.data[1]
-      value: 
-      objectReference: {fileID: 1458603497}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
 --- !u!1 &1839254283 stripped

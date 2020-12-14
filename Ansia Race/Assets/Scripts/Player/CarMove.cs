@@ -13,7 +13,8 @@ public class CarMove : MonoBehaviour
     public float slowPercentage = 70f;
     public float slowedMaxSpeed = 0.1f;
     public float slowingDeceleration = 0.09f;
-    private float realMaxSpeed;
+    public float realMaxSpeed;
+    public float realTurningRate;
 
     [Header("")]
     [Header("Boost Settings")]
@@ -48,6 +49,7 @@ public class CarMove : MonoBehaviour
         boostspeedTimer = boostSpeedTime;
         decelTimer = boostDecelerationTime;
         realMaxSpeed = maxSpeed;
+        realTurningRate = turningRate;
     }
 
     void Update()
@@ -85,6 +87,20 @@ public class CarMove : MonoBehaviour
         //Collisione con muro
         if (collision.gameObject.tag == "Wall")
             HitWall();
+
+        //Zona rallentante
+        if (collision.gameObject.tag == "SlowArea")
+        {
+            maxSpeed = slowedMaxSpeed;
+            SlowMove();
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        //Zona rallentante
+        if (collision.gameObject.tag == "SlowArea")
+            maxSpeed = realMaxSpeed;
     }
 
     //Accelerazione della macchina
