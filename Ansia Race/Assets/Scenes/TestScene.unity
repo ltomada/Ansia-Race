@@ -926,7 +926,7 @@ Transform:
   m_LocalScale: {x: 1000, y: 1, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1429417223
 GameObject:
@@ -1249,10 +1249,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car1
       objectReference: {fileID: 0}
-    - target: {fileID: 3155665520142845588, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -7150889083716802961, guid: 2919772a7391b20479e510ea13bae134, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edb28c62f12f1fc42a2b1ba53028f087, type: 3}
 --- !u!1001 &3113899439686290610
@@ -1268,7 +1264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3113899439007717528, guid: 2ee1c02f72491fa45ac17e3e0ef2468b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3113899439007717528, guid: 2ee1c02f72491fa45ac17e3e0ef2468b, type: 3}
       propertyPath: m_LocalPosition.x
