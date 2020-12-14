@@ -131,6 +131,7 @@ public class CarMove : MonoBehaviour
             {
                 BoostTimersReset();
                 boostRelease = false;
+                this.GetComponent<BoostPieces>().UnmountPart();
             }
         }
     }
@@ -153,7 +154,7 @@ public class CarMove : MonoBehaviour
     {
         
         
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !boosting && !boostRelease)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !boosting && !boostRelease && this.GetComponent<BoostPieces>().boostPossible)
         {
             boosting = true;
             Debug.Log("Dovrebbe funzionare");

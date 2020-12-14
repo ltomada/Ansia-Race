@@ -9,6 +9,8 @@ TagManager:
   - Timer
   - Wall
   - SlowArea
+  - Ruota
+  - Peso
   layers:
   - Default
   - TransparentFX
