@@ -48,6 +48,7 @@ public class BoostPieces : MonoBehaviour
             }
 
             //smonta il pezzo
+            carParts[partSelector].AddComponent<Rigidbody>();
             carParts[partSelector].GetComponent<Rigidbody>().isKinematic = false;
             carParts[partSelector].GetComponent<Rigidbody>().useGravity = true;
             carParts[partSelector].transform.parent = null;

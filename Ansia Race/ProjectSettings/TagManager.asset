@@ -15,6 +15,7 @@ TagManager:
   - Pause1
   - Pause2
   - PauseF
+  - Terrain
   layers:
   - Default
   - TransparentFX
