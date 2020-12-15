@@ -13,6 +13,15 @@ public class ManagerScript : MonoBehaviour
     public float enemyAdvancement = 96f;
 
     [Header("")]
+    [Header("Other Canvases & Panels")]
+    [Header("")]
+    public GameObject fullCanvas;
+    public GameObject levelStart;
+    public GameObject levelFinish;
+    public GameObject levelFail;
+
+
+    [Header("")]
     [Header("Level Settings")]
     [Header("")]
     public GameObject[] levels;
@@ -27,9 +36,18 @@ public class ManagerScript : MonoBehaviour
 
     void Update()
     {
+
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name != "WorldMap")
+        {
             worldCanvas.SetActive(false);
+            levelStart.SetActive(true);
+            PauseGame();
+        }
         else
             worldCanvas.SetActive(true);
 
@@ -46,5 +64,27 @@ public class ManagerScript : MonoBehaviour
         levels[level].GetComponent<Image>().color = clearedColor; 
         level++;
         levels[level].GetComponent<Button>().interactable = true;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void FinishMenu()
+    {
+        levelFinish.SetActive(true);
+        PauseGame();
+    }
+
+    public void FailMenu()
+    {
+        levelFail.SetActive(true);
+        PauseGame();
     }
 }
