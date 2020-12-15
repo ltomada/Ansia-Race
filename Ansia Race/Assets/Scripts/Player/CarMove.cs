@@ -38,12 +38,6 @@ public class CarMove : MonoBehaviour
     public float breaksIntegrity = 1f;
     public float breaksDeceleration = 0f;
 
-    [Header("")]
-    [Header("Non toccate qui grazie")]
-    [Header("")]
-    public bool cya = false;
-    private float fallSpeed = 0f;
-
     //Other private variables
     private float lerpMoment = 0f;
 
@@ -62,23 +56,11 @@ public class CarMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && breaksIntegrity > 0)
             Breaking();
-        else if (!cya)
+        else
             Moving();
 
         if (Time.timeScale == 0)
             speed = 0;
-
-        if (cya)
-            Fall();
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        string tag = other.tag;
-        if (tag == "Terrain" || tag == "SlowArea" || tag == "Finish")
-            cya = false;
-        else
-            cya = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -97,9 +79,6 @@ public class CarMove : MonoBehaviour
         //Fine livello
         if (other.tag == "Finish")
             LevelEnd();
-
-        if (other.tag == "Terrain")
-            cya = false;
     }
 
     private void OnTriggerExit(Collider other)
@@ -279,14 +258,5 @@ public class CarMove : MonoBehaviour
     private void LevelEnd()
     {
         GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerScript>().FinishMenu();
-    }
-
-    private void Fall()
-    {
-        Vector3 giu = new Vector3(0, -1f, 0);
-        Debug.Log("CADO");
-        fallSpeed += fallSpeed;
-        transform.position -= giu.normalized * fallSpeed;
-        //transform.Translate(giu.normalized * fallSpeed);
     }
 }

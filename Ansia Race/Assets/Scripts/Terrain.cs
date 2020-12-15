@@ -25,7 +25,7 @@ public class Terrain : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<CarMove>().cya = true;
+
         }
     }
 }
