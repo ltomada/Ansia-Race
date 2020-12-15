@@ -11,6 +11,10 @@ TagManager:
   - SlowArea
   - Ruota
   - Peso
+  - World
+  - Pause1
+  - Pause2
+  - PauseF
   layers:
   - Default
   - TransparentFX

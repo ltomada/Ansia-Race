@@ -58,6 +58,9 @@ public class CarMove : MonoBehaviour
             Breaking();
         else
             Moving();
+
+        if (Time.timeScale == 0)
+            speed = 0;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -72,6 +75,10 @@ public class CarMove : MonoBehaviour
             maxSpeed = slowedMaxSpeed;
             SlowMove();
         }
+
+        //Fine livello
+        if (other.tag == "Finish")
+            LevelEnd()
     }
 
     private void OnTriggerExit(Collider other)
@@ -94,6 +101,8 @@ public class CarMove : MonoBehaviour
             maxSpeed = slowedMaxSpeed;
             SlowMove();
         }
+
+        Debug.Log(collision.gameObject.tag);
     }
 
     private void OnCollisionExit(Collision collision)
@@ -101,6 +110,15 @@ public class CarMove : MonoBehaviour
         //Zona rallentante
         if (collision.gameObject.tag == "SlowArea")
             maxSpeed = realMaxSpeed;
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "SlowArea")
+        {
+            maxSpeed = slowedMaxSpeed;
+            SlowMove();
+        }
     }
 
     //Accelerazione della macchina
@@ -235,5 +253,10 @@ public class CarMove : MonoBehaviour
         accelTimer = boostAccelerationTime;
         boostspeedTimer = boostSpeedTime;
         decelTimer = boostDecelerationTime;
+    }
+
+    private void LevelEnd()
+    {
+        GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerScript>().FinishMenu();
     }
 }

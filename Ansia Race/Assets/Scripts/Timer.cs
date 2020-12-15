@@ -50,7 +50,7 @@ public class Timer : MonoBehaviour
             this.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = (minutes + ":" + seconds + ":" + cents);
 
             if (levelTimer <= 0)
-                GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerScript>().LevelFail();
+                GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerScript>().FailMenu();
         }
     }
 
