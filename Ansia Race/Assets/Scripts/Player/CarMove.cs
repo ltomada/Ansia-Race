@@ -45,6 +45,7 @@ public class CarMove : MonoBehaviour
 
     //Other private variables
     private float lerpMoment = 0f;
+    private Vector3 flatVector = new Vector3(1f, 0, 1f);
 
 
     void Start()
@@ -131,7 +132,8 @@ public class CarMove : MonoBehaviour
         speed += acceleration * Time.deltaTime;
         speed = Mathf.Clamp(speed, 0f, maxSpeed);
         //carT.Translate(carT.forward.normalized * speed); <------Non so perchè ma funziona male con la rotazione
-        transform.position += transform.forward.normalized * speed;
+        Vector3 forward = (Vector3.Scale(transform.forward, flatVector)).normalized;
+        transform.position += forward * speed;
     }
 
     //Rotazione della macchina
@@ -154,7 +156,8 @@ public class CarMove : MonoBehaviour
                 speed = boostSpeed;
                 boostspeedTimer -= Time.deltaTime;
             }
-            transform.position += transform.forward.normalized * speed;
+            Vector3 forward = (Vector3.Scale(transform.forward, flatVector)).normalized;
+            transform.position += forward * speed;
         }
         else              //decelera
         {
@@ -164,7 +167,8 @@ public class CarMove : MonoBehaviour
             {
                 speed += LerpNumber(speed, maxSpeed, boostDecelerationTime);
                 decelTimer -= Time.deltaTime;
-                transform.position += transform.forward.normalized * speed;
+                Vector3 forward = (Vector3.Scale(transform.forward, flatVector)).normalized;
+                transform.position += forward * speed;
             }
             else           //resetta
             {
@@ -191,12 +195,9 @@ public class CarMove : MonoBehaviour
 
     //Per checkare se stare fermo o partire
     private void Moving()
-    {
-        
-        
+    {               
         if (Input.GetKeyDown(KeyCode.LeftShift) && !boosting && !boostRelease && this.GetComponent<BoostPieces>().boostPossible)
             boosting = true;
-
 
         if (boosting || boostRelease)
             Boost();
@@ -221,7 +222,8 @@ public class CarMove : MonoBehaviour
             breaksIntegrity += Time.deltaTime;
         }
         speed = Mathf.Clamp(speed, 0f, speed);
-        transform.position += transform.forward.normalized * speed;
+        Vector3 forward = (Vector3.Scale(transform.forward, flatVector)).normalized;
+        transform.position += forward * speed;
     }
 
     //Zona rallentata
