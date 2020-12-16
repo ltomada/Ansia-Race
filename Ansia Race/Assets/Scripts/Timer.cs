@@ -11,6 +11,8 @@ public class Timer : MonoBehaviour
     public float levelTimer;
     public float partTimer;
     public bool timerActive = false;
+    public float lowTime = 20f;
+    public Color lowTimeColor;
 
     [Header("")]
     [Header("Canvas Settings")]
@@ -49,6 +51,9 @@ public class Timer : MonoBehaviour
                 cents = centsN.ToString();
 
             this.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = (minutes + ":" + seconds + ":" + cents);
+
+            if (levelTimer <= lowTime)
+                this.gameObject.GetComponent<TMPro.TextMeshProUGUI>().color = lowTimeColor;
 
             if (levelTimer <= 0)
                 GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerScript>().FailMenu();

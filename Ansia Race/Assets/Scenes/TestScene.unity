@@ -1974,7 +1974,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8280840638908663406, guid: b76c7cf485de4f34abffed8b74c659f3, type: 3}
       propertyPath: levelTimer
-      value: 10
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280840638908663406, guid: b76c7cf485de4f34abffed8b74c659f3, type: 3}
+      propertyPath: lowTimeColor.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b76c7cf485de4f34abffed8b74c659f3, type: 3}

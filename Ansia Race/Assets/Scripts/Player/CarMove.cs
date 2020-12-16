@@ -101,8 +101,6 @@ public class CarMove : MonoBehaviour
             maxSpeed = slowedMaxSpeed;
             SlowMove();
         }
-
-        Debug.Log(collision.gameObject.tag);
     }
 
     private void OnCollisionExit(Collision collision)
@@ -189,10 +187,8 @@ public class CarMove : MonoBehaviour
         
         
         if (Input.GetKeyDown(KeyCode.LeftShift) && !boosting && !boostRelease && this.GetComponent<BoostPieces>().boostPossible)
-        {
             boosting = true;
-            Debug.Log("Dovrebbe funzionare");
-        }
+
 
         if (boosting || boostRelease)
             Boost();

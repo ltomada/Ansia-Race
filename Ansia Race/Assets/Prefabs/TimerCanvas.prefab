@@ -246,7 +246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c67feca4df6bca4db7278a7413ef177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTimer: 90
+  levelTimer: 25
   partTimer: 0
   timerActive: 1
+  lowTime: 20
+  lowTimeColor: {r: 1, g: 0.26052085, b: 0, a: 1}
   screenTime: {fileID: 0}
