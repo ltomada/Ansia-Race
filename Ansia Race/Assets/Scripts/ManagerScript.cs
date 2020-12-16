@@ -30,6 +30,8 @@ public class ManagerScript : MonoBehaviour
 
     void Start()
     {
+        if (GameObject.FindGameObjectsWithTag("Manager").Length != 1)
+            Destroy(this.gameObject);
         DontDestroyOnLoad(this.gameObject);
         levels[0].GetComponent<Button>().interactable = true;
     }
@@ -61,7 +63,8 @@ public class ManagerScript : MonoBehaviour
 
     public void LevelSuccess()
     {
-        levels[level].GetComponent<Image>().color = clearedColor; 
+        levels[level].GetComponent<Image>().color = clearedColor;
+        levels[level].GetComponent<Button>().interactable = false;
         level++;
         levels[level].GetComponent<Button>().interactable = true;
     }
