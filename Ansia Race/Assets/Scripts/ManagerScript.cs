@@ -26,6 +26,7 @@ public class ManagerScript : MonoBehaviour
     [Header("")]
     public GameObject[] levels;
     private int level = 0;
+    private int failCounter = 0;
     public Color clearedColor;
 
     void Start()
@@ -38,7 +39,7 @@ public class ManagerScript : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
     private void OnLevelWasLoaded(int level)
@@ -59,6 +60,9 @@ public class ManagerScript : MonoBehaviour
     {
         Vector2 newPos = new Vector2(enemy.GetComponent<RectTransform>().anchoredPosition.x + enemyAdvancement, 0f);
         enemy.GetComponent<RectTransform>().anchoredPosition = newPos;
+        failCounter++;
+        if (((failCounter * enemyAdvancement)/2) > (186.333f * (level + 1)))
+            GameOver();
     }
 
     public void LevelSuccess()
@@ -89,5 +93,11 @@ public class ManagerScript : MonoBehaviour
     {
         levelFail.SetActive(true);
         PauseGame();
+    }
+
+    private void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+        Destroy(this.gameObject);
     }
 }
