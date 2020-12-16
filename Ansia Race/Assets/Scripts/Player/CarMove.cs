@@ -86,6 +86,9 @@ public class CarMove : MonoBehaviour
         //Fine livello
         if (other.tag == "Finish")
             LevelEnd();
+
+        if (other.tag == "Fall")
+            GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerScript>().FailMenu();
     }
 
     private void OnTriggerExit(Collider other)

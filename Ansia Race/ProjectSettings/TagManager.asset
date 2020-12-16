@@ -16,6 +16,7 @@ TagManager:
   - Pause2
   - PauseF
   - Terrain
+  - Fall
   layers:
   - Default
   - TransparentFX
