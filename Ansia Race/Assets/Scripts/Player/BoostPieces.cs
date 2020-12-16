@@ -12,6 +12,8 @@ public class BoostPieces : MonoBehaviour
     public GameObject[] carParts;
     public bool[] carPartsCheck;
     public int c;
+    public GameObject leftSpark;
+    public GameObject rightSpark;
 
     [Header("")]
     [Header("Effects Settings")]
@@ -48,7 +50,13 @@ public class BoostPieces : MonoBehaviour
             }
 
             //smonta il pezzo
-            carParts[partSelector].AddComponent<Rigidbody>();
+            if (carParts[partSelector].name == "ruota_AS")
+                leftSpark.SetActive(true);
+
+            if (carParts[partSelector].name == "ruota_AD")
+                rightSpark.SetActive(true);
+
+                carParts[partSelector].AddComponent<Rigidbody>();
             carParts[partSelector].GetComponent<Rigidbody>().isKinematic = false;
             carParts[partSelector].GetComponent<Rigidbody>().useGravity = true;
             carParts[partSelector].transform.parent = null;
