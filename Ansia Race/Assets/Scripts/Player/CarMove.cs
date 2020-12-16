@@ -38,6 +38,11 @@ public class CarMove : MonoBehaviour
     public float breaksIntegrity = 1f;
     public float breaksDeceleration = 0f;
 
+    [Header("")]
+    [Header("Effects Settings")]
+    [Header("")]
+    public GameObject fuocoMarmitte;
+
     //Other private variables
     private float lerpMoment = 0f;
 
@@ -50,6 +55,7 @@ public class CarMove : MonoBehaviour
         decelTimer = boostDecelerationTime;
         realMaxSpeed = maxSpeed;
         realTurningRate = turningRate;
+        fuocoMarmitte.SetActive(false);
     }
 
     void Update()
@@ -140,6 +146,7 @@ public class CarMove : MonoBehaviour
     {
         if ((accelTimer > 0) || (boostspeedTimer > 0))          //accelera
         {
+            fuocoMarmitte.SetActive(true);
             speed += LerpNumber(speed, boostSpeed, boostAccelerationTime);
             accelTimer -= Time.deltaTime;
             if (accelTimer <= 0)                  //stasi
@@ -161,6 +168,7 @@ public class CarMove : MonoBehaviour
             }
             else           //resetta
             {
+                fuocoMarmitte.SetActive(false);
                 BoostTimersReset();
                 boostRelease = false;
                 this.GetComponent<BoostPieces>().UnmountPart();
