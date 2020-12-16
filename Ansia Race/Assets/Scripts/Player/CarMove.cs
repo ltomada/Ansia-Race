@@ -266,6 +266,6 @@ public class CarMove : MonoBehaviour
 
     private void LevelEnd()
     {
-        GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerScript>().FinishMenu();
+        GameObject.FindGameObjectWithTag("Manager").GetComponent<ManagerScript>().LevelSuccess();
     }
 }

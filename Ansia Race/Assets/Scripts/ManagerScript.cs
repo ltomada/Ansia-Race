@@ -19,6 +19,7 @@ public class ManagerScript : MonoBehaviour
     public GameObject levelStart;
     public GameObject levelFinish;
     public GameObject levelFail;
+    public GameObject backPanel;
 
 
     [Header("")]
@@ -48,8 +49,8 @@ public class ManagerScript : MonoBehaviour
         if (currentScene.name != "WorldMap")
         {
             worldCanvas.SetActive(false);
-            levelStart.SetActive(true);
-            PauseGame();
+            //levelStart.SetActive(true);
+            //PauseGame();
         }
         else
             worldCanvas.SetActive(true);
@@ -67,6 +68,9 @@ public class ManagerScript : MonoBehaviour
 
     public void LevelSuccess()
     {
+        SceneManager.LoadScene("WorldMap");
+        backPanel.SetActive(true);
+        levelFinish.SetActive(true);
         levels[level].GetComponent<Image>().color = clearedColor;
         levels[level].GetComponent<Button>().interactable = false;
         level++;
@@ -85,12 +89,16 @@ public class ManagerScript : MonoBehaviour
 
     public void FinishMenu()
     {
+        SceneManager.LoadScene("WorldMap");
+        backPanel.SetActive(true);
         levelFinish.SetActive(true);
         PauseGame();
     }
 
     public void FailMenu()
     {
+        SceneManager.LoadScene("WorldMap");
+        backPanel.SetActive(true);
         levelFail.SetActive(true);
         PauseGame();
     }
